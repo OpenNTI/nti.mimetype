@@ -14,7 +14,8 @@ logger = __import__('logging').getLogger(__name__)
 import weakref
 import warnings
 
-from zope import interface, component
+from zope import component
+from zope import interface
 
 from zope.mimetype.interfaces import IContentTypeAware
 from zope.mimetype.interfaces import mimeTypeConstraint

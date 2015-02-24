@@ -13,7 +13,7 @@
 				
 	<adapter factory=".mimetype.ContentTypeMarkerTypeAwareAdapter" />
 
-	<!-- Finding objects by mimetype -->
+	<!-- Finding objects by mimeType -->
 	<adapter factory=".mimetype.ModeledContentTypeMimeFactory"
 			 provides="nti.externalization.interfaces.IMimeObjectFactory"
 			 for="dolmen.builtins.IDict" />
