@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Mimetype related interfaces.
-
 .. $Id$
 """
 
@@ -11,9 +9,5 @@ __docformat__ = "restructuredtext en"
 
 logger = __import__('logging').getLogger(__name__)
 
-from zope import interface
-
-class IContentTypeMarker(interface.Interface):
-	"""
-	Marker interface for deriving mimetypes from class names.
-	"""
+from nti.dataserver.core.interfaces import IContentTypeMarker
+IContentTypeMarker = IContentTypeMarker

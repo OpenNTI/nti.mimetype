@@ -48,6 +48,7 @@ setup(
 		'zope.mimetype',
 		'zope.security',
 		'nti.common',
+		'nti.dataserver.core',
 		'nti.externalization'
 	],
 	extras_require={
