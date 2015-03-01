@@ -44,6 +44,7 @@ setup(
 		'setuptools',
 		'dolmen.builtins',
 		'zope.component',
+		'zope.deferredimport',
 		'zope.interface',
 		'zope.mimetype',
 		'zope.security',
