@@ -22,7 +22,7 @@ from zope.mimetype.interfaces import mimeTypeConstraint
 
 from nti.common.property import alias
 
-from nti.dataserver.core.interfaces import IContentTypeMarker
+from nti.coremetadata.interfaces import IContentTypeMarker
 
 # The base mimetype for items in this package.
 # NOTE: Mimetypes should be bytes, not unicode
