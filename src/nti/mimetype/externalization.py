@@ -23,14 +23,17 @@ from .mimetype import nti_mimetype_from_object
 CLASS = StandardExternalFields.CLASS
 MIMETYPE = StandardExternalFields.MIMETYPE
 
+def decorateMimeType(orig, result):
+	if CLASS in result and MIMETYPE not in result:
+		mime_type = nti_mimetype_from_object(orig, 0)
+		if mime_type:
+			result[MIMETYPE] = mime_type
+
 @component.adapter(object)
 @interface.implementer(IExternalMappingDecorator)
 class MimeTypeDecorator(object):
-	
+
 	__metaclass__ = SingletonDecorator
 
-	def decorateExternalMapping( self, orig, result ):
-		if CLASS in result and MIMETYPE not in result:
-			mime_type = nti_mimetype_from_object( orig, 0 )
-			if mime_type:
-				result[MIMETYPE] = mime_type
+	def decorateExternalMapping(self, orig, result):
+		decorateMimeType(orig, result)
