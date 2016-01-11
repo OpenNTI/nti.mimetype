@@ -18,7 +18,7 @@ from nti.externalization.singleton import SingletonDecorator
 from nti.externalization.interfaces import StandardExternalFields
 from nti.externalization.interfaces import IExternalMappingDecorator
 
-from .mimetype import nti_mimetype_from_object
+from nti.mimetype.mimetype import nti_mimetype_from_object
 
 CLASS = StandardExternalFields.CLASS
 MIMETYPE = StandardExternalFields.MIMETYPE
