@@ -29,6 +29,8 @@ def decorateMimeType(orig, result):
 		mime_type = nti_mimetype_from_object(orig, 0)
 		if mime_type:
 			result[MIMETYPE] = mime_type
+			return mime_type
+	return None
 
 @component.adapter(object)
 @interface.implementer(IExternalMappingDecorator)
