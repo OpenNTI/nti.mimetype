@@ -14,9 +14,10 @@ __all__ = ['MimeTypeDecorator']
 from zope import component
 from zope import interface
 
-from nti.externalization.singleton import SingletonDecorator
 from nti.externalization.interfaces import StandardExternalFields
 from nti.externalization.interfaces import IExternalMappingDecorator
+
+from nti.externalization.singleton import SingletonDecorator
 
 from nti.mimetype.mimetype import nti_mimetype_from_object
 
