@@ -20,9 +20,9 @@ from zope import interface
 from zope.mimetype.interfaces import IContentTypeAware
 from zope.mimetype.interfaces import mimeTypeConstraint
 
-from nti.common.property import alias
-
 from nti.coremetadata.interfaces import IContentTypeMarker
+
+from nti.property.property import alias
 
 #: The base mimetype for items in this package.
 #: NOTE: Mimetypes should be bytes, not unicode

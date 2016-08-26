@@ -48,9 +48,9 @@ setup(
 		'zope.interface',
 		'zope.mimetype',
 		'zope.security',
-		'nti.common',
 		'nti.coremetadata',
-		'nti.externalization'
+		'nti.externalization',
+		'nti.property'
 	],
 	extras_require={
 		'test': TESTS_REQUIRE,
