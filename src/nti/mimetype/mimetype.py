@@ -11,6 +11,7 @@ __docformat__ = "restructuredtext en"
 
 logger = __import__('logging').getLogger(__name__)
 
+import re
 import weakref
 import warnings
 
@@ -18,7 +19,6 @@ from zope import component
 from zope import interface
 
 from zope.mimetype.interfaces import IContentTypeAware
-from zope.mimetype.interfaces import mimeTypeConstraint
 
 from nti.coremetadata.interfaces import IContentTypeMarker
 
@@ -42,6 +42,16 @@ MIME_BASE_JSON = MIME_BASE + MIME_EXT_JSON
 #: The base mimetype with plist
 MIME_BASE_PLIST = MIME_BASE + MIME_EXT_PLIST
 
+_token_re = r"[!#$%&'*+\-.\d^_`a-z{|}~]+"
+_mime_type_rx = re.compile("%s/%s(;*)*" % (_token_re, _token_re))
+
+def mimeTypeConstraint(value):
+	"""
+    Return `True` iff `value` is a syntactically legal MIME type.
+    """
+	return _mime_type_rx.match(value) is not None
+mime_type_constraint = mimeTypeConstraint
+
 @interface.implementer(IContentTypeAware)
 @component.adapter(IContentTypeMarker)
 class ContentTypeMarkerTypeAwareAdapter(object):
@@ -61,6 +71,7 @@ ContentTypeMarkeTypeAwareAdapter = ContentTypeMarkerTypeAwareAdapter  # BBB
 _mm_types = weakref.WeakSet()
 
 class _ClassProperty(property):
+
 	def __get__(self, cls, owner):
 		return self.fget.__get__(None, owner)()
 
