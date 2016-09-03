@@ -243,3 +243,16 @@ def nti_mimetype_from_object(obj, use_class=True):
 
 	if isinstance(obj, basestring) and mimeTypeConstraint(obj):
 		return obj
+
+def parse_mime_type(mime_type):
+	params = {}
+	parts = mime_type.split(';')
+	for part in parts or ():
+		p = part.split('=')
+		if len(p) == 2:
+			params[p[0].strip()] = p[1].strip()
+	fullType = parts[0].replace('/^\s+/', '').replace('/\s+$/', '');
+	if fullType == '*':
+		fullType = '*/*'
+	typeParts = fullType.split('/');
+	return (typeParts[0], typeParts[1], params)
