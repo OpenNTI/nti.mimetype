@@ -34,5 +34,5 @@ class TestMimeType(unittest.TestCase):
 				  "application/*",
 				  "application/xhtml;",
 				  str('text/plain;charset=US-ASCII')):
-			obj = mime_type_constraint(s)
-			assert_that(obj, is_not(none()))
+			value = mime_type_constraint(s)
+			assert_that(value, is_(True))

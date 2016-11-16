@@ -49,7 +49,7 @@ def mimeTypeConstraint(value):
 	"""
     Return `True` iff `value` is a syntactically legal MIME type.
     """
-	return _mime_type_rx.match(value) is not None
+	return bool(_mime_type_rx.match(value) is not None)
 mime_type_constraint = mimeTypeConstraint
 
 @interface.implementer(IContentTypeAware)
