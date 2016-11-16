@@ -30,6 +30,9 @@ class TestMimeType(unittest.TestCase):
 		assert_that(parsed, is_(("application", "xhtml", { "q" : "0.5" })))
 		
 	def test_mime_type_constraint(self):
-		for s in ("application/xhtml;q=0.5","application/*", "application/xhtml;"):
+		for s in ("application/xhtml;q=0.5",
+				  "application/*",
+				  "application/xhtml;",
+				  str('text/plain;charset=US-ASCII')):
 			obj = mime_type_constraint(s)
 			assert_that(obj, is_not(none()))
