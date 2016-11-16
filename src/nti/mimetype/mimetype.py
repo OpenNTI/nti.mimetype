@@ -43,7 +43,7 @@ MIME_BASE_JSON = MIME_BASE + MIME_EXT_JSON
 MIME_BASE_PLIST = MIME_BASE + MIME_EXT_PLIST
 
 _token_re = r"[!#$%&'*+\-.\d^_`a-z{|}~]+"
-_mime_type_rx = re.compile("%s/%s(;*)*" % (_token_re, _token_re))
+_mime_type_rx = re.compile("%s/%s(;.*)*" % (_token_re, _token_re))
 
 def mimeTypeConstraint(value):
 	"""
