@@ -20,7 +20,7 @@ from zope import interface
 
 from zope.mimetype.interfaces import IContentTypeAware
 
-from nti.coremetadata.interfaces import IContentTypeMarker
+from nti.mimetype.interfaces import IContentTypeMarker
 
 from nti.property.property import alias
 
