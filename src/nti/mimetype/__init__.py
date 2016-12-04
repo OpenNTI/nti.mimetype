@@ -12,3 +12,7 @@ logger = __import__('logging').getLogger(__name__)
 from nti.mimetype.externalization import decorateMimeType
 
 from nti.mimetype.mimetype import nti_mimetype_from_object
+
+from nti.mimetype.monkey import patch
+patch()
+del patch
