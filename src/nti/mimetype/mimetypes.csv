@@ -1,0 +1,130 @@
+application/acad,AutoCAD,dwg
+application/arj,compressed archive,arj
+application/astound,Astound,"asd, asn"
+application/clariscad,ClarisCAD,ccad
+application/drafting,MATRA Prelude drafting,drw
+application/dxf,DXF (AutoCAD),dxf
+application/i-deas,SDRC I-DEAS,unv
+application/iges,IGES graphics format,"iges, igs"
+application/java-archive,Java archive,jar
+application/java-archive,Java archive,"war, ear"
+application/javascript,JavaScript,js
+application/mac-binhex40,Macintosh binary BinHex 4.0,hqx
+application/msaccess,Microsoft Access,mdb
+application/msexcel,Microsoft Excel,"xla, xls, xlt, xlw"
+application/mspowerpoint,Microsoft PowerPoint,"pot, pps, ppt"
+application/msproject,Microsoft Project,mpp
+application/msword,Microsoft Word,"doc, word, w6w"
+application/mswrite,Microsoft Write,wri
+application/octet-stream,Command,com
+application/octet-stream,uninterpreted binary,bin
+application/oda,ODA,oda
+application/pdf,Adobe Acrobat,pdf
+application/postscript,PostScript,"ai, eps, ps"
+application/pro_eng,PTC Pro/ENGINEER,"part, prt"
+application/rtf,Rich Text Format,rtf
+application/set,SET (French CAD),set
+application/sla,stereolithography,stl
+application/solids,MATRA Prelude Solids,sol
+application/STEP,ISO-10303 STEP data,"st, step, stp"
+application/vda,VDA-FS Surface data,vda
+application/vnd.ms-htmlhelp,Microsoft Html Help File,chm
+application/x-bcpio,binary CPIO,bcpio
+application/x-cocoa,Cocoa archive,cco
+application/x-cpio,POSIX CPIO,cpio
+application/x-csh,C-shell script,csh
+application/x-director,Macromedia Director,"dcr, dir, dxr"
+application/x-dvi,TeX DVI,dvi
+application/x-dwf,AutoCAD,dwf
+application/x-gtar,GNU tar,gtar
+application/x-gzip,GNU ZIP,"gz, gzip"
+application/x-hdf,NCSA HDF Data File,hdf
+application/x-java-archive-diff,JAR diff archive,jardiff
+application/x-latex,LaTeX source,latex
+application/x-macbinary,Macintosh compressed,bin
+application/x-makeself,Make fun rile,run
+application/x-midi,MIDI,mid
+application/x-mif,FrameMaker MIF,mif
+application/x-ms-application,Microsoft ClickOnce,"app, application"
+application/x-msaccess,Microsoft Access,mdb
+application/x-msdownload,Microsoft Application,exe
+application/x-netcdf,Unidata netCDF,"cdf, nc"
+application/x-perl,Perl archive,pm
+application/x-redhat-package-manager,RedHat package manager,rpm
+application/x-sea,Sea Archive,sea
+application/x-sh,Bourne shell script,sh
+application/x-shar,shell archive,shar
+application/x-shockwave-flash,Macromedia Shockwave,swf
+application/x-stuffit,StuffIt archive,sit
+application/x-sv4cpio,SVR4 CPIO,sv4cpio
+application/x-sv4crc,SVR4 CPIO with CRC,sv4crc
+application/x-tar,4.3BSD tar format,tar
+application/x-tcl,TCL archive,"tcl, tk"
+application/x-tcl,TCL script,tcl
+application/x-tex,TeX source,tex
+application/x-texinfo,Texinfo (Emacs),"texi, texinfo"
+application/x-troff,Troff,"roff, t, tr"
+application/x-troff-man,Troff with MAN macros,man
+application/x-troff-me,Troff with ME macros,me
+application/x-troff-ms,Troff with MS macros,ms
+application/x-ustar,POSIX tar format,ustar
+application/x-wais-source,WAIS source,src
+application/x-winhelp,Microsoft Windows help,hlp
+application/x-x509-ca-cert,Internet Security Certificate File,cer
+application/x-x509-ca-cert,X509 certificate,pem
+application/xml,XML archive,xml
+application/zip,ZIP archive,zip
+audio/adpcm,Adaptive differential pulse-code modulation,adp
+audio/basic,BASIC audio (u-law),"au, snd"
+audio/midi,MIDI,"mid, midi"
+audio/x-aiff,AIFF audio,"aif, aifc, aiff"
+audio/x-mpeg,MPEG audio,mp3
+audio/x-pn-realaudio,RealAudio,"ra, ram"
+audio/x-pn-realaudio-plugin,RealAudio plug-in,rpm
+audio/x-voice,Voice,voc
+audio/x-wav,Microsoft Windows WAVE audio,wav
+image/bmp,Bitmap,bmp
+image/gif,GIF image,gif
+image/ief,Image Exchange Format,ief
+image/jpeg,JPEG image,"jpe, jpeg, jpg"
+image/pict,Macintosh PICT,pict
+image/png,Portable Network Graphic,png
+image/tiff,TIFF image,"tif, tiff"
+image/x-cmu-raster,CMU raster,ras
+image/x-jng,JNG archive,jng
+image/x-portable-anymap,PBM Anymap format,pnm
+image/x-portable-bitmap,PBM Bitmap format,pbm
+image/x-portable-graymap,PBM Graymap format,pgm
+image/x-portable-pixmap,PBM Pixmap format,ppm
+image/x-rgb,RGB image,rgb
+image/x-xbitmap,X Bitmap,xbm
+image/x-xpixmap,X Pixmap,xpm
+image/x-xwindowdump,X Window System dump,xwd
+multipart/x-gzip,GNU ZIP archive,gzip
+multipart/x-zip,PKZIP archive,zip
+text/asp,Active Server Page,asp
+text/bas,BASIC Source Code,bas
+text/bat,Batch Processing,bat
+text/cmd,DOS CP/M Command File,cmd
+text/html,HTML,"htm, html"
+text/html,SHTML archive,shtml
+text/mathml,MATHML,mml
+text/plain,plain text,"C, cc, h, txt"
+text/richtext,MIME Richtext,rtx
+text/tab-separated-values,text with tabs,tsv
+text/x-component,Component,htc
+text/x-rst,reStructuredText,rst
+text/x-script.csh,csh Script,csh
+text/x-setext,Structurally Enhanced Text,etx
+text/x-sgml,SGML,"sgm, sgml"
+video/3gpp,3GPP media archoive,3gpp
+video/mpeg,MPEG video,"mpe, mpeg, mpg"
+video/msvideo,Microsoft Windows video,avi
+video/quicktime,QuickTime video,"mov, qt"
+video/vdo,VDO streaming video,vdo
+video/vivo,VIVO streaming video,"viv, vivo"
+video/x-sgi-movie,SGI Movieplayer format,movie
+x-conference/x-cooltalk,CoolTalk,ice
+x-world/x-svr,Virtual reality,svr
+x-world/x-vrml,VRML Worlds,wrl
+x-world/x-vrt,Virtual reality,vrt
