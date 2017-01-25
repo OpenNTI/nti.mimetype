@@ -13,13 +13,15 @@ from zope.mimetype.interfaces import IContentTypeAware
 
 from nti.mimetype.mimetype import mimeTypeConstraint
 
+
 def _patch():
-	# use a proper mime-type validation
-	mimeType = IContentTypeAware['mimeType']
-	mimeType.constraint = mimeTypeConstraint
+    # use a proper mime-type validation
+    mimeType = IContentTypeAware['mimeType']
+    mimeType.constraint = mimeTypeConstraint
+
 
 def patch():
-	pass
+    pass
 
 _patch()
 del _patch

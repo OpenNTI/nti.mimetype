@@ -48,6 +48,7 @@ setup(
 		'zope.interface',
 		'zope.mimetype',
 		'zope.security',
+		'nti.base',
 		'nti.externalization',
 		'nti.property'
 	],

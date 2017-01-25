@@ -9,11 +9,11 @@ __docformat__ = "restructuredtext en"
 
 logger = __import__('logging').getLogger(__name__)
 
-from zope import interface
+import zope.deferredimport
+zope.deferredimport.initialize()
 
-try:
-	from nti.coremetadata.interfaces import IContentTypeMarker
-except ImportError:
-	class IContentTypeMarker(interface.Interface):
-		pass
-IContentTypeMarker = IContentTypeMarker
+zope.deferredimport.deprecatedFrom(
+    "Moved to nti.base.interfaces",
+    "nti.base.interfaces",
+    "IContentTypeMarker"
+)
