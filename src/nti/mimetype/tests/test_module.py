@@ -33,3 +33,4 @@ class TestMimeTypes(unittest.TestCase):
         assert_that(guess_type('foo.tif')[0], is_('image/tiff'))
         assert_that(guess_type('foo.tiff')[0], is_('image/tiff'))
         assert_that(guess_type('foo.jp2')[0], is_('image/jp2'))
+        assert_that(guess_type('foo.rst')[0], is_('text/x-rst'))
