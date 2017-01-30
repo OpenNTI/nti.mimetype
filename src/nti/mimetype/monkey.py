@@ -9,9 +9,27 @@ __docformat__ = "restructuredtext en"
 
 logger = __import__('logging').getLogger(__name__)
 
+import os
+import csv
+import mimetypes as p_mimetypes
+
 from zope.mimetype.interfaces import IContentTypeAware
 
 from nti.mimetype.mimetype import mimeTypeConstraint
+
+
+def _add_local_types():
+    path = os.path.join(os.path.dirname(__file__), "mimetypes.csv")
+    with open(path, "rU") as fp:
+        reader = csv.reader(fp)
+        for row in reader:
+            mimeType = row[0]
+            for ext in [e.strip().lower() for e in row[2].split(',')]:
+                ext = '.' + ext if not ext.startswith('.') else ext
+                p_mimetypes.add_type(mimeType, ext)
+
+_add_local_types()
+del _add_local_types
 
 
 def _patch():
@@ -19,9 +37,9 @@ def _patch():
     mimeType = IContentTypeAware['mimeType']
     mimeType.constraint = mimeTypeConstraint
 
+_patch()
+del _patch
+
 
 def patch():
     pass
-
-_patch()
-del _patch
