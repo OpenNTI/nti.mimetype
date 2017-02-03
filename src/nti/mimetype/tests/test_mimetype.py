@@ -19,20 +19,21 @@ from nti.mimetype.mimetype import mime_type_constraint
 
 from nti.mimetype.tests import SharedConfiguringTestLayer
 
+
 class TestMimeType(unittest.TestCase):
 
-	layer = SharedConfiguringTestLayer
+    layer = SharedConfiguringTestLayer
 
-	def test_parse_mime_type(self):
-		s = "application/xhtml;q=0.5"
-		parsed = parse_mime_type(s)
-		assert_that(parsed, is_(("application", "xhtml", { "q" : "0.5" })))
-		
-	def test_mime_type_constraint(self):
-		for s in ("application/xhtml;q=0.5",
-				  "application/*",
-				  "application/xhtml;",
-				  'text/plain',
-				  str('text/plain;charset=US-ASCII')):
-			value = mime_type_constraint(s)
-			assert_that(value, is_(True))
+    def test_parse_mime_type(self):
+        s = "application/xhtml;q=0.5"
+        parsed = parse_mime_type(s)
+        assert_that(parsed, is_(("application", "xhtml", {"q": "0.5"})))
+
+    def test_mime_type_constraint(self):
+        for s in ("application/xhtml;q=0.5",
+                  "application/*",
+                  "application/xhtml;",
+                  'text/plain',
+                  str('text/plain;charset=US-ASCII')):
+            value = mime_type_constraint(s)
+            assert_that(value, is_(True))
