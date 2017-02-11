@@ -48,8 +48,8 @@ _mime_type_rx = re.compile("%s/%s(;.*)*" % (_token_re, _token_re))
 
 def mimeTypeConstraint(value):
     """
-Return `True` iff `value` is a syntactically legal MIME type.
-"""
+    Return `True` iff `value` is a syntactically legal MIME type.
+    """
     return bool(_mime_type_rx.match(value) is not None)
 mime_type_constraint = mimeTypeConstraint
 
