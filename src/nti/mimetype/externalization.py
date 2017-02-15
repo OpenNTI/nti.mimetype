@@ -9,8 +9,6 @@ __docformat__ = "restructuredtext en"
 
 logger = __import__('logging').getLogger(__name__)
 
-__all__ = ['MimeTypeDecorator']
-
 from zope import component
 from zope import interface
 
