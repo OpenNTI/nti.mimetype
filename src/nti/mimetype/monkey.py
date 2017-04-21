@@ -11,6 +11,7 @@ logger = __import__('logging').getLogger(__name__)
 
 import os
 import csv
+import codecs
 import mimetypes as p_mimetypes
 
 from zope.mimetype.interfaces import IContentTypeAware
@@ -20,7 +21,7 @@ from nti.mimetype.mimetype import mimeTypeConstraint
 
 def _add_local_types():
     path = os.path.join(os.path.dirname(__file__), "mimetypes.csv")
-    with open(path, "rU") as fp:
+    with codecs.open(path, "r", encoding="utf-8") as fp:
         reader = csv.reader(fp)
         for row in reader:
             mimeType = row[0]
@@ -34,7 +35,7 @@ del _add_local_types
 
 def _patch():
     # use a proper mime-type validation
-    mimeType = IContentTypeAware['mimeType']
+    mimeType = IContentTypeAware[u'mimeType']
     mimeType.constraint = mimeTypeConstraint
 
 _patch()
