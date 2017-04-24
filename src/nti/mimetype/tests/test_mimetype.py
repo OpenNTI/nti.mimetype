@@ -29,7 +29,7 @@ class TestMimeType(unittest.TestCase):
         parsed = parse_mime_type(s)
         assert_that(parsed, is_(("application", "xhtml", {"q": "0.5"})))
 
-    def test_mime_type_constraint(self):
+    def test_rfc2047_mime_type_constraint(self):
         for s in ("application/xhtml;q=0.5",
                   "application/*",
                   "application/xhtml;",
