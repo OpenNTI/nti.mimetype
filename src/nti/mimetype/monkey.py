@@ -16,7 +16,7 @@ import mimetypes as p_mimetypes
 
 from zope.mimetype.interfaces import IContentTypeAware
 
-from nti.mimetype.mimetype import mimeTypeConstraint
+from nti.mimetype.mimetype import rfc2047MimeTypeConstraint
 
 
 def _add_local_types():
@@ -34,9 +34,9 @@ del _add_local_types
 
 
 def _patch():
-    # use a proper mime-type validation
+    # TODO: This is wrong for interface
     mimeType = IContentTypeAware[u'mimeType']
-    mimeType.constraint = mimeTypeConstraint
+    mimeType.constraint = rfc2047MimeTypeConstraint
 
 _patch()
 del _patch

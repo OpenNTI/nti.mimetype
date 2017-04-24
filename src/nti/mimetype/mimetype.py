@@ -18,6 +18,8 @@ import warnings
 from zope import component
 from zope import interface
 
+from zope.contenttype.parse import parse as parse_contenttype
+
 from zope.mimetype.interfaces import IContentTypeAware
 
 from nti.base.interfaces import IContentTypeMarker
@@ -46,12 +48,14 @@ _token_re = r"[!#$%&'*+\-.\d^_`a-z{|}~]+"
 _mime_type_rx = re.compile("%s/%s(;.*)*" % (_token_re, _token_re))
 
 
-def mimeTypeConstraint(value):
+def rfc2047MimeTypeConstraint(value):
     """
     Return `True` iff `value` is a syntactically legal MIME type.
     """
     return bool(_mime_type_rx.match(value) is not None)
-mime_type_constraint = mimeTypeConstraint
+
+
+mime_type_constraint = mimeTypeConstraint = rfc2047MimeTypeConstraint
 
 
 @interface.implementer(IContentTypeAware)
@@ -68,6 +72,7 @@ class ContentTypeMarkerTypeAwareAdapter(object):
         self.parameters = None
 
     mimeType = alias('mime_type')
+
 
 ContentTypeMarkeTypeAwareAdapter = ContentTypeMarkerTypeAwareAdapter  # BBB
 
@@ -139,13 +144,14 @@ class ModeledContentTypeAwareRegistryMetaclass(type):
             _mm_types.add(new_type)
         return new_type
 
+
 from dolmen.builtins import IDict
 
 from nti.externalization.interfaces import IMimeObjectFactory
 
 
-@interface.implementer(IMimeObjectFactory)
 @component.adapter(IDict)
+@interface.implementer(IMimeObjectFactory)
 def ModeledContentTypeMimeFactory(externalized_object):
     """
     A generic adapter factory to find specific factories (types)
@@ -164,7 +170,8 @@ def is_nti_mimetype(obj):
     :return: Whether `obj` is a string representing an NTI mimetype.
     """
     try:
-        return mimeTypeConstraint(obj.lower()) and obj.lower().startswith(MIME_BASE)
+        return  rfc2047MimeTypeConstraint(obj.lower()) \
+            and obj.lower().startswith(MIME_BASE)
     except (TypeError, AttributeError):
         return False
 
@@ -216,7 +223,7 @@ def nti_mimetype_from_object(obj, use_class=True):
     returned. If it is :class:`interfaces.IModeledContent`, then
     a value will be derived from that. Otherwise, if it is a recognized
     class, a value will be derived from that. Finally, if it
-    is a string that fits the :meth:`mimeTypeConstraint`, that will
+    is a string that fits the :meth:`rfc2047MimeTypeConstraint`, that will
     be returned.
 
     :param bool use_class: If true (the default), then the class of the object
@@ -265,19 +272,9 @@ def nti_mimetype_from_object(obj, use_class=True):
                      clazz, getattr(obj, '__class__', clazz))
         return nti_mimetype_with_class(clazz.__name__)
 
-    if isinstance(obj, basestring) and mimeTypeConstraint(obj):
+    if isinstance(obj, basestring) and rfc2047MimeTypeConstraint(obj):
         return obj
 
 
 def parse_mime_type(mime_type):
-    params = {}
-    parts = mime_type.split(';')
-    for part in parts or ():
-        p = part.split('=')
-        if len(p) == 2:
-            params[p[0].strip()] = p[1].strip()
-    fullType = parts[0].replace('/^\s+/', '').replace('/\s+$/', '')
-    if fullType == '*':
-        fullType = '*/*'
-    typeParts = fullType.split('/')
-    return (typeParts[0], typeParts[1], params)
+    return parse_contenttype(mime_type)

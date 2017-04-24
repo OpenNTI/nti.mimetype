@@ -15,7 +15,7 @@ does_not = is_not
 import unittest
 
 from nti.mimetype.mimetype import parse_mime_type
-from nti.mimetype.mimetype import mime_type_constraint
+from nti.mimetype.mimetype import rfc2047MimeTypeConstraint
 
 from nti.mimetype.tests import SharedConfiguringTestLayer
 
@@ -35,5 +35,5 @@ class TestMimeType(unittest.TestCase):
                   "application/xhtml;",
                   'text/plain',
                   str('text/plain;charset=US-ASCII')):
-            value = mime_type_constraint(s)
+            value = rfc2047MimeTypeConstraint(s)
             assert_that(value, is_(True))
