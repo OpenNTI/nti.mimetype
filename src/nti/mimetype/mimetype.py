@@ -145,7 +145,7 @@ class ModeledContentTypeAwareRegistryMetaclass(type):
         return new_type
 
 
-from dolmen.builtins import IDict
+from nti.base.interfaces import IDict
 
 from nti.externalization.interfaces import IMimeObjectFactory
 

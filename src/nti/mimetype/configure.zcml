@@ -16,6 +16,6 @@
 	<!-- Finding objects by mimeType -->
 	<adapter factory=".mimetype.ModeledContentTypeMimeFactory"
 			 provides="nti.externalization.interfaces.IMimeObjectFactory"
-			 for="dolmen.builtins.IDict" />
+			 for="nti.base.interfaces.IDict" />
 
 </configure>

@@ -42,16 +42,15 @@ setup(
     tests_require=TESTS_REQUIRE,
     install_requires=[
         'setuptools',
-        'dolmen.builtins',
+		'nti.base',
+		'nti.externalization',
+		'nti.property',
         'zope.component',
         'zope.contenttype',
         'zope.deferredimport',
         'zope.interface',
         'zope.mimetype',
         'zope.security',
-        'nti.base',
-        'nti.externalization',
-        'nti.property'
     ],
     extras_require={
         'test': TESTS_REQUIRE,
