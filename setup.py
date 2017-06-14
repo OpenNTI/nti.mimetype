@@ -42,9 +42,9 @@ setup(
     tests_require=TESTS_REQUIRE,
     install_requires=[
         'setuptools',
-		'nti.base',
-		'nti.externalization',
-		'nti.property',
+        'nti.base',
+        'nti.externalization',
+        'nti.property',
         'zope.component',
         'zope.contenttype',
         'zope.deferredimport',
