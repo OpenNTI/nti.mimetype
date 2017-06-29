@@ -4,7 +4,7 @@
 .. $Id$
 """
 
-from __future__ import unicode_literals, print_function, absolute_import, division
+from __future__ import print_function, absolute_import, division
 __docformat__ = "restructuredtext en"
 
 logger = __import__('logging').getLogger(__name__)
@@ -29,14 +29,15 @@ def _add_local_types():
                 ext = '.' + ext if not ext.startswith('.') else ext
                 p_mimetypes.add_type(mimeType, ext)
 
+
 _add_local_types()
 del _add_local_types
 
 
 def _patch():
-    # TODO: This is wrong for interface
     mimeType = IContentTypeAware[u'mimeType']
     mimeType.constraint = rfc2047MimeTypeConstraint
+
 
 _patch()
 del _patch

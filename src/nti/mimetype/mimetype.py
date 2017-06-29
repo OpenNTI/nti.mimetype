@@ -6,7 +6,7 @@ Having to do with mime types.
 .. $Id$
 """
 
-from __future__ import print_function, unicode_literals, absolute_import, division
+from __future__ import print_function, absolute_import, division
 __docformat__ = "restructuredtext en"
 
 logger = __import__('logging').getLogger(__name__)
@@ -28,15 +28,15 @@ from nti.property.property import alias
 
 #: The base mimetype for items in this package.
 #: NOTE: Mimetypes should be bytes, not unicode
-MIME_BASE = b'application/vnd.nextthought'
+MIME_BASE = 'application/vnd.nextthought'
 
 #: The extension on the base mimetype explicitly requesting
 #: JSON format data
-MIME_EXT_JSON = b'+json'
+MIME_EXT_JSON = '+json'
 
 #: The extension on the base mimetype explicitly requesting
 #: plist format data
-MIME_EXT_PLIST = b'+plist'
+MIME_EXT_PLIST = '+plist'
 
 #: The base mimetype with json
 MIME_BASE_JSON = MIME_BASE + MIME_EXT_JSON
@@ -53,8 +53,6 @@ def rfc2047MimeTypeConstraint(value):
     Return `True` iff `value` is a syntactically legal MIME type.
     """
     return bool(_mime_type_rx.match(value) is not None)
-
-
 mime_type_constraint = mimeTypeConstraint = rfc2047MimeTypeConstraint
 
 
@@ -75,6 +73,7 @@ class ContentTypeMarkerTypeAwareAdapter(object):
 
 
 ContentTypeMarkeTypeAwareAdapter = ContentTypeMarkerTypeAwareAdapter  # BBB
+
 
 _mm_types = weakref.WeakSet()
 
@@ -115,7 +114,9 @@ class ModeledContentTypeAwareRegistryMetaclass(type):
     @_ClassProperty
     @classmethod
     def external_mime_types(mcs):
-        return {x.mimeType for x in _mm_types if getattr(x, '__external_can_create__', False)}
+        return {
+            x.mimeType for x in _mm_types if getattr(x, '__external_can_create__', False)
+        }
 
     def __new__(cls, name, bases, cls_dict):
         if '__eq__' in cls_dict and '__hash__' not in cls_dict:
@@ -170,8 +171,8 @@ def is_nti_mimetype(obj):
     :return: Whether `obj` is a string representing an NTI mimetype.
     """
     try:
-        return  rfc2047MimeTypeConstraint(obj.lower()) \
-            and obj.lower().startswith(MIME_BASE)
+        return rfc2047MimeTypeConstraint(obj.lower()) \
+           and obj.lower().startswith(MIME_BASE)
     except (TypeError, AttributeError):
         return False
 
@@ -197,11 +198,11 @@ def nti_mimetype_with_class(clazz):
     Returns a ASCII string.
     """
 
-    name = b''
+    name = ''
     if isinstance(clazz, type):
-        name = b'.' + clazz.__name__
+        name = '.' + clazz.__name__
     elif isinstance(clazz, basestring):
-        name = b'.' + clazz.encode('ascii')
+        name = '.' + clazz.encode('ascii')
 
     return MIME_BASE + name.lower()
 
