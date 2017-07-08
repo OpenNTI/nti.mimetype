@@ -35,7 +35,7 @@ del _add_local_types
 
 
 def _patch():
-    mimeType = IContentTypeAware[u'mimeType']
+    mimeType = IContentTypeAware['mimeType']
     mimeType.constraint = rfc2047MimeTypeConstraint
 
 
