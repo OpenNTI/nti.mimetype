@@ -4,10 +4,9 @@
 .. $Id$
 """
 
-from __future__ import print_function, absolute_import, division
-__docformat__ = "restructuredtext en"
-
-logger = __import__('logging').getLogger(__name__)
+from __future__ import division
+from __future__ import print_function
+from __future__ import absolute_import
 
 import os
 import csv
@@ -16,10 +15,15 @@ import mimetypes as p_mimetypes
 
 from zope.mimetype.interfaces import IContentTypeAware
 
+from nti.base.deprecation import moved
+
 from nti.mimetype.mimetype import rfc2047MimeTypeConstraint
+
+logger = __import__('logging').getLogger(__name__)
 
 
 def _add_local_types():
+    logger.debug('Loading additional mimetypes')
     path = os.path.join(os.path.dirname(__file__), "mimetypes.csv")
     with codecs.open(path, "r", encoding="utf-8") as fp:
         reader = csv.reader(fp)
@@ -29,7 +33,6 @@ def _add_local_types():
                 ext = '.' + ext if not ext.startswith('.') else ext
                 p_mimetypes.add_type(mimeType, ext)
 
-
 _add_local_types()
 del _add_local_types
 
@@ -37,6 +40,8 @@ del _add_local_types
 def _patch():
     mimeType = IContentTypeAware['mimeType']
     mimeType.constraint = rfc2047MimeTypeConstraint
+
+    moved('nti.mimetype.interfaces', 'nti.base.interfaces')
 
 
 _patch()

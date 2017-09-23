@@ -1,17 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Having to do with mime types.
-
 .. $Id$
 """
 
-from __future__ import print_function, absolute_import, division
-__docformat__ = "restructuredtext en"
-
-logger = __import__('logging').getLogger(__name__)
+from __future__ import division
+from __future__ import print_function
+from __future__ import absolute_import
 
 import re
+import six
 import weakref
 import warnings
 
@@ -47,6 +45,8 @@ MIME_BASE_PLIST = MIME_BASE + MIME_EXT_PLIST
 _token_re = r"[!#$%&'*+\-.\d^_`a-z{|}~]+"
 _mime_type_rx = re.compile("%s/%s(;.*)*" % (_token_re, _token_re))
 
+logger = __import__('logging').getLogger(__name__)
+
 
 def rfc2047MimeTypeConstraint(value):
     """
@@ -70,8 +70,6 @@ class ContentTypeMarkerTypeAwareAdapter(object):
         self.parameters = None
 
     mimeType = alias('mime_type')
-
-
 ContentTypeMarkeTypeAwareAdapter = ContentTypeMarkerTypeAwareAdapter  # BBB
 
 
@@ -108,12 +106,12 @@ class ModeledContentTypeAwareRegistryMetaclass(type):
 
     @_ClassProperty
     @classmethod
-    def mime_types(mcs):
+    def mime_types(_):
         return {x.mimeType for x in _mm_types}
 
     @_ClassProperty
     @classmethod
-    def external_mime_types(mcs):
+    def external_mime_types(_):
         return {
             x.mimeType for x in _mm_types if getattr(x, '__external_can_create__', False)
         }
@@ -273,7 +271,7 @@ def nti_mimetype_from_object(obj, use_class=True):
                      clazz, getattr(obj, '__class__', clazz))
         return nti_mimetype_with_class(clazz.__name__)
 
-    if isinstance(obj, basestring) and rfc2047MimeTypeConstraint(obj):
+    if isinstance(obj, six.string_types) and rfc2047MimeTypeConstraint(obj):
         return obj
 
 
