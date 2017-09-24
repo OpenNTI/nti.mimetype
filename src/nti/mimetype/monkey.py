@@ -33,6 +33,7 @@ def _add_local_types():
                 ext = '.' + ext if not ext.startswith('.') else ext
                 p_mimetypes.add_type(mimeType, ext)
 
+
 _add_local_types()
 del _add_local_types
 
