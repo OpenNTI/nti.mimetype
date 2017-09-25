@@ -20,6 +20,8 @@ from zope.contenttype.parse import parse as parse_contenttype
 
 from zope.mimetype.interfaces import IContentTypeAware
 
+from nti.base._compat import native_
+
 from nti.base.interfaces import IContentTypeMarker
 
 from nti.property.property import alias
@@ -56,8 +58,8 @@ def rfc2047MimeTypeConstraint(value):
 mime_type_constraint = mimeTypeConstraint = rfc2047MimeTypeConstraint
 
 
-@interface.implementer(IContentTypeAware)
 @component.adapter(IContentTypeMarker)
+@interface.implementer(IContentTypeAware)
 class ContentTypeMarkerTypeAwareAdapter(object):
     """
     Makes any :class:IResource into an :class:IContentTypeAware
@@ -106,12 +108,12 @@ class ModeledContentTypeAwareRegistryMetaclass(type):
 
     @_ClassProperty
     @classmethod
-    def mime_types(_):
+    def mime_types(_=None):
         return {x.mimeType for x in _mm_types}
 
     @_ClassProperty
     @classmethod
-    def external_mime_types(_):
+    def external_mime_types(_=None):
         return {
             x.mimeType for x in _mm_types if getattr(x, '__external_can_create__', False)
         }
@@ -199,8 +201,8 @@ def nti_mimetype_with_class(clazz):
     name = ''
     if isinstance(clazz, type):
         name = '.' + clazz.__name__
-    elif isinstance(clazz, basestring):
-        name = '.' + clazz.encode('ascii')
+    elif isinstance(clazz, six.string_types):
+        name = '.' + native_(clazz.encode('ascii'))
 
     return MIME_BASE + name.lower()
 
