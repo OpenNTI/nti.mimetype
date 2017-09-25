@@ -22,7 +22,10 @@ from zope.mimetype.interfaces import IContentTypeAware
 
 from nti.base._compat import native_
 
+from nti.base.interfaces import IDict
 from nti.base.interfaces import IContentTypeMarker
+
+from nti.externalization.interfaces import IMimeObjectFactory
 
 from nti.property.property import alias
 
@@ -144,11 +147,6 @@ class ModeledContentTypeAwareRegistryMetaclass(type):
             interface.classImplements(new_type, IContentTypeAware)
             _mm_types.add(new_type)
         return new_type
-
-
-from nti.base.interfaces import IDict
-
-from nti.externalization.interfaces import IMimeObjectFactory
 
 
 @component.adapter(IDict)
