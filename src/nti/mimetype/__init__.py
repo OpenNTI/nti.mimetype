@@ -10,8 +10,6 @@ from __future__ import absolute_import
 
 import mimetypes as p_mimetypes
 
-logger = __import__('logging').getLogger(__name__)
-
 
 def guess_type(url, strict=True):
     return p_mimetypes.guess_type(url, strict) if url else (None, None)
