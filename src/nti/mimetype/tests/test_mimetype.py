@@ -70,6 +70,9 @@ class TestMimeType(unittest.TestCase):
                     is_(none()))
 
     def test_nti_mimetype_with_class(self):
+        assert_that(nti_mimetype_with_class(None),
+                    is_(none()))
+
         class Bleach(object):
             pass
         assert_that(nti_mimetype_with_class(Bleach),

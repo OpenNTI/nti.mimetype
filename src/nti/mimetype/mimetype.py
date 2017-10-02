@@ -195,13 +195,14 @@ def nti_mimetype_with_class(clazz):
     """
     Returns a ASCII string.
     """
+    if clazz is None:
+        return None
 
     name = ''
     if isinstance(clazz, type):
         name = '.' + clazz.__name__
     elif isinstance(clazz, six.string_types):
         name = '.' + native_(clazz.encode('ascii'))
-
     return MIME_BASE + name.lower()
 
 
