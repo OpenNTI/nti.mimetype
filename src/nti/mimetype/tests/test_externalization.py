@@ -22,6 +22,8 @@ from nti.externalization.interfaces import IInternalObjectExternalizer
 from nti.externalization.externalization import to_external_object
 from nti.externalization.externalization import decorate_external_mapping
 
+from nti.mimetype.externalization import decorateMimeType
+
 from nti.mimetype.tests import SharedConfiguringTestLayer
 
 CLASS = StandardExternalFields.CLASS
@@ -47,3 +49,5 @@ class TestExternalization(unittest.TestCase):
         decorate_external_mapping(b, ext_obj)
         assert_that(ext_obj,
                     has_entry(MIMETYPE, is_('application/vnd.nextthought.bleach')))
+        # coverage
+        decorateMimeType(b, ext_obj)

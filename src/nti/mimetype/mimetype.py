@@ -122,12 +122,12 @@ class ModeledContentTypeAwareRegistryMetaclass(type):
         }
 
     def __new__(cls, name, bases, cls_dict):
-        if '__eq__' in cls_dict and '__hash__' not in cls_dict:
+        if '__eq__' in cls_dict and '__hash__' not in cls_dict: # pragma: no cover
             # This is a deprecated scenario; but the built-in DeprecationWarning includes
             # no useful information (it points to the metaclass)
             # (Because we are almost always used in a class that is being decorated by
             # zope.interface or zope.component, we issue a warning for stacklevel two and
-            # three to get the expected behaviour)
+            # three to get the expected behaviour
             warnings.warn("Overriding __eq__ blocks inheritance of __hash__ in 3.x",
                           DeprecationWarning, stacklevel=2)
             warnings.warn("Overriding __eq__ blocks inheritance of __hash__ in 3.x",
@@ -206,13 +206,14 @@ def nti_mimetype_with_class(clazz):
     return MIME_BASE + name.lower()
 
 
-def _safe_by(meth, obj):
+def safe_by(meth, obj):
     # These tend to use hashing, which tends
     # to blow up on builtin objects like dicts
     try:
         return meth(obj)
     except TypeError:
         return False
+_safe_by = safe_by
 
 
 def nti_mimetype_from_object(obj, use_class=True):
@@ -239,7 +240,7 @@ def nti_mimetype_from_object(obj, use_class=True):
     if content_type_aware:
         return content_type_aware.mimeType
 
-    if _safe_by(IContentTypeMarker.providedBy, obj):
+    if safe_by(IContentTypeMarker.providedBy, obj):
         # Find the IModeledContent subtype that it implements.
         # The most derived will be in the list providedBy.
         for iface in interface.providedBy(obj):

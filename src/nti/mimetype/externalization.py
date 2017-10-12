@@ -14,7 +14,7 @@ from zope import interface
 from nti.externalization.interfaces import StandardExternalFields
 from nti.externalization.interfaces import IExternalMappingDecorator
 
-from nti.externalization.singleton import SingletonMetaclass
+from nti.externalization.singleton import Singleton
 
 from nti.mimetype.mimetype import nti_mimetype_from_object
 
@@ -35,12 +35,7 @@ def decorateMimeType(orig, result):
 
 @component.adapter(object)
 @interface.implementer(IExternalMappingDecorator)
-class MimeTypeDecorator(object):
-
-    __metaclass__ = SingletonMetaclass
-
-    def __init__(self, *args):
-        pass
-
+class MimeTypeDecorator(Singleton):
+    
     def decorateExternalMapping(self, orig, result):
         decorateMimeType(orig, result)

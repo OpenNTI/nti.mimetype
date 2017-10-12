@@ -11,9 +11,9 @@ from __future__ import absolute_import
 from hamcrest import is_
 from hamcrest import none
 from hamcrest import is_not
+from hamcrest import has_length
 from hamcrest import assert_that
 from hamcrest import has_property
-from hamcrest.library.object.haslength import has_length
 does_not = is_not
 
 import six
@@ -29,6 +29,7 @@ from nti.externalization.interfaces import IMimeObjectFactory
 
 from nti.mimetype.mimetype import ModeledContentTypeAwareRegistryMetaclass
 
+from nti.mimetype.mimetype import safe_by
 from nti.mimetype.mimetype import is_nti_mimetype
 from nti.mimetype.mimetype import parse_mime_type
 from nti.mimetype.mimetype import nti_mimetype_class
@@ -151,18 +152,21 @@ class TestMimeType(unittest.TestCase):
 
         assert_that(nti_mimetype_from_object(Zaraki),
                     is_('application/vnd.nextthought.captain'))
-        
+
         assert_that(nti_mimetype_from_object('application/vnd.nextthought.captain'),
                     is_('application/vnd.nextthought.captain'))
-        
+
         assert_that(nti_mimetype_from_object('invalid'),
                     is_(none()))
-        
+
         assert_that(nti_mimetype_from_object(None),
                     is_(none()))
 
 
 class TestCoverage(unittest.TestCase):
+
+    def test_safe_by(self):
+        safe_by(IContentTypeAware, object())
 
     def test_nti_mimetype_from_object(self):
         class ICaptain(IContentTypeMarker):
