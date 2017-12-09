@@ -84,6 +84,7 @@ _mm_types = weakref.WeakSet()
 class _ClassProperty(property):
 
     def __get__(self, cls, owner):
+        # pylint: disable=no-member
         return self.fget.__get__(None, owner)()
 
 
@@ -156,7 +157,7 @@ def ModeledContentTypeMimeFactory(externalized_object):
     A generic adapter factory to find specific factories (types)
     based on the mimetype of an object.
     """
-    # TODO: An optimization might be to register a specific factory
+    # An optimization might be to register a specific factory
     # each time a class is created?
     mime_name = externalized_object.get('MimeType')
     for x in _mm_types:
