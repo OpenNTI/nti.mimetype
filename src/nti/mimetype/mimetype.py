@@ -8,7 +8,6 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import absolute_import
 
-import re
 import six
 import weakref
 import warnings
@@ -26,6 +25,8 @@ from nti.base.interfaces import IDict
 from nti.base.interfaces import IContentTypeMarker
 
 from nti.externalization.interfaces import IMimeObjectFactory
+
+from nti.mimetype.schema import rfc2047MimeTypeConstraint
 
 from nti.property.property import alias
 
@@ -47,18 +48,7 @@ MIME_BASE_JSON = MIME_BASE + MIME_EXT_JSON
 #: The base mimetype with plist
 MIME_BASE_PLIST = MIME_BASE + MIME_EXT_PLIST
 
-_token_re = r"[!#$%&'*+\-.\d^_`a-z{|}~]+"
-_mime_type_rx = re.compile("%s/%s(;.*)*" % (_token_re, _token_re))
-
 logger = __import__('logging').getLogger(__name__)
-
-
-def rfc2047MimeTypeConstraint(value):
-    """
-    Return `True` iff `value` is a syntactically legal MIME type.
-    """
-    return bool(_mime_type_rx.match(value) is not None)
-mime_type_constraint = mimeTypeConstraint = rfc2047MimeTypeConstraint
 
 
 @component.adapter(IContentTypeMarker)
