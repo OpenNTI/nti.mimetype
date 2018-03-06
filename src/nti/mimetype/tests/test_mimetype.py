@@ -22,9 +22,9 @@ from zope import interface
 
 from zope.mimetype.interfaces import IContentTypeAware
 
-from nti.base.interfaces import IContentTypeMarker
-
 from nti.externalization.interfaces import IMimeObjectFactory
+
+from nti.mimetype.interfaces import IContentTypeMarker
 
 from nti.mimetype.mimetype import ModeledContentTypeAwareRegistryMetaclass
 

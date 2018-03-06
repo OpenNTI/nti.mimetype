@@ -19,12 +19,13 @@ from zope.contenttype.parse import parse as parse_contenttype
 
 from zope.mimetype.interfaces import IContentTypeAware
 
-from nti.base._compat import native_
-
-from nti.base.interfaces import IDict
-from nti.base.interfaces import IContentTypeMarker
-
 from nti.externalization.interfaces import IMimeObjectFactory
+
+from nti.mimetype._compat import native_
+
+from nti.mimetype.interfaces import IDict
+
+from nti.mimetype.interfaces import IContentTypeMarker
 
 from nti.mimetype.schema import rfc2047MimeTypeConstraint
 

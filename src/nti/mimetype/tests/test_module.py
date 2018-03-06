@@ -20,7 +20,7 @@ class TestMimeTypes(unittest.TestCase):
 
     def test_guess_type(self):
         t = guess_type('foo.xml')
-        assert_that(t[0], is_('application/xml'))
+        assert_that(t[0], is_('text/xml'))
         t = guess_type('foo.mml')
         assert_that(t[0], is_('text/mathml'))
         assert_that(guess_type(None), is_((None, None)))
