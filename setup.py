@@ -47,7 +47,6 @@ setup(
     tests_require=TESTS_REQUIRE,
     install_requires=[
         'setuptools',
-        'nti.base',
         'nti.externalization',
         'nti.property',
         'six',
