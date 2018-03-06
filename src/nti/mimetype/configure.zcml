@@ -18,6 +18,6 @@
 	<!-- Finding objects by mimeType -->
 	<adapter factory=".mimetype.ModeledContentTypeMimeFactory"
 			 provides="nti.externalization.interfaces.IMimeObjectFactory"
-			 for="nti.base.interfaces.IDict" />
+			 for=".interfaces.IDict" />
 
 </configure>
