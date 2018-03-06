@@ -7,6 +7,11 @@ Externalization
 
 .. automodule:: nti.mimetype.externalization
 
+Interfaces
+==========
+
+.. automodule:: nti.mimetype.interfaces
+
 MimeType
 ========
 
