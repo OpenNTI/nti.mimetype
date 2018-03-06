@@ -72,7 +72,6 @@ application/x-wais-source,WAIS source,src
 application/x-winhelp,Microsoft Windows help,hlp
 application/x-x509-ca-cert,Internet Security Certificate File,cer
 application/x-x509-ca-cert,X509 certificate,pem
-application/xml,XML archive,xml
 application/zip,ZIP archive,zip
 audio/adpcm,Adaptive differential pulse-code modulation,adp
 audio/basic,BASIC audio (u-law),"au, snd"
