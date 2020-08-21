@@ -19,10 +19,9 @@ from nti.mimetype.schema import rfc2047MimeTypeConstraint
 
 logger = __import__('logging').getLogger(__name__)
 
-
 def _add_local_types():
     """
-    Add additional mimetypes' 
+    Add additional mimetypes'
     """
     logger.debug('Loading additional mimetypes')
     path = os.path.join(os.path.dirname(__file__), "mimetypes.csv")
